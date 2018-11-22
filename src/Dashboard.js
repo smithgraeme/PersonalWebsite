@@ -16,7 +16,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from './listItems';
 import SimpleLineChart from './SimpleLineChart';
 
-const drawerWidth = 300;
+const drawerWidth = 350;
 
 const styles = theme => ({
   root: {
@@ -139,11 +139,7 @@ class Dashboard extends React.Component {
             >
               graemesmith.info
             </Typography>
-            {/* <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
+
           </Toolbar>
         </AppBar>
         <Drawer
@@ -166,7 +162,7 @@ class Dashboard extends React.Component {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Typography variant="h4" gutterBottom component="h2">
-            Orders
+            
           </Typography>
           <Typography component="div" className={classes.chartContainer}>
             <SimpleLineChart />
