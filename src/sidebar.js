@@ -8,6 +8,7 @@ import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import DesktopMacIcon from '@material-ui/icons/DesktopMac';
 import FaceIcon from '@material-ui/icons/Face';
 import WidgetsIcon from '@material-ui/icons/Widgets';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 export const sidebar = (
   <div>
@@ -46,6 +47,13 @@ export const sidebar = (
         <CameraAltIcon />
       </ListItemIcon>
       <ListItemText primary="Photography" />
+    </ListItem>
+
+    <ListItem button>
+      <ListItemIcon>
+        <MailOutlineIcon />
+      </ListItemIcon>
+      <ListItemText primary="Contact" />
     </ListItem>
 
   </div>
