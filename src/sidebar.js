@@ -9,7 +9,7 @@ import DesktopMacIcon from '@material-ui/icons/DesktopMac';
 import FaceIcon from '@material-ui/icons/Face';
 import WidgetsIcon from '@material-ui/icons/Widgets';
 
-export const mainListItems = (
+export const sidebar = (
   <div>
 
     <ListItem button>

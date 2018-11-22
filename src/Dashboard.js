@@ -13,7 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { mainListItems } from './listItems';
+import { sidebar } from './sidebar';
 import SimpleLineChart from './SimpleLineChart';
 
 const drawerWidth = 350;
@@ -155,14 +155,14 @@ class Dashboard extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <List>{mainListItems}</List>
+          <List>{sidebar}</List>
 
         </Drawer>
 
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Typography variant="h4" gutterBottom component="h2">
-            
+
           </Typography>
           <Typography component="div" className={classes.chartContainer}>
             <SimpleLineChart />
