@@ -15,8 +15,7 @@ phases:
       # - command
   pre_build:
     commands:
-      - echo Executing buildspec.yml file from source code...
-      - echo Installing source NPM dependencies...
+      - echo Executing buildspec.yml file from source code. Installing source NPM dependencies.
       - npm install
   build:
     commands:
