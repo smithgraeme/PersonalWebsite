@@ -1,0 +1,35 @@
+textarea {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 95%;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(20px + 2vmin);
+  color: #5B5B5B;
+}
+
+.contactForm {
+  font-size: calc(9px + 2vmin);
+}
+
+.smallText {
+  font-size: calc(4px + 2vmin);
+}
+
+.smallTextBox {
+  width: 400px
+}
+
+.title {
+  color: #171717;
+}

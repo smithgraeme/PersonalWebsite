@@ -13,10 +13,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 import NavigationSidebar from './NavigationSidebar.js'
-import Resume from './Resume'
-import Projects from './Projects'
+import DashboardMain from './DashboardMain.js'
 
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 const drawerWidth = 350;
 
@@ -159,18 +158,11 @@ class Dashboard extends React.Component {
             </div>
 
             <Divider />
-
             <NavigationSidebar />
 
           </Drawer>
 
-          <main className={classes.content}>
-            <div className={classes.appBarSpacer} />
-
-            <Route path="/resume" component={Resume}/>
-            <Route path="/projects" component={Projects}/>
-
-          </main>
+          <DashboardMain />
         </div>
       </Router>
     );
