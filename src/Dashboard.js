@@ -12,7 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
-import Sidebar from './Sidebar.js'
+import NavigationSidebar from './NavigationSidebar.js'
 import Resume from './Resume'
 import Projects from './Projects'
 
@@ -160,7 +160,7 @@ class Dashboard extends React.Component {
 
             <Divider />
 
-            <Sidebar />
+            <NavigationSidebar />
 
           </Drawer>
 

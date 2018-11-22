@@ -61,9 +61,11 @@ const sidebarComponents = sidebarStructure.map((entry) =>
 
 function Sidebar() {
   return (<List>
+
     <div>
       {sidebarComponents}
     </div>
+
   </List>);
 }
 
