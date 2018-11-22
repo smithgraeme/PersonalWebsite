@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Resume from './pages/Resume'
-import GitHub from './pages/GitHub'
 import Photography from './pages/Photography'
 import Contact from './pages/Contact'
 
@@ -30,7 +29,6 @@ function DashboardMain(props) {
       <Route path="/" component={Home} exact/>
       <Route path="/projects" component={Projects}/>
       <Route path="/resume" component={Resume}/>
-      <Route path="/github" component={GitHub}/>
       <Route path="/photography" component={Photography}/>
       <Route path="/contact" component={Contact}/>
 

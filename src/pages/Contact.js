@@ -11,7 +11,7 @@ class App extends Component {
             <strong className="title">Send me an email</strong>
           </p>
 
-          <form action="https://api.graemesmith.info/postcontactform" method="post" className="contactForm">
+          <form action="https://api.graemesmith.info/postcontactform" method="post" className="contactForm" autoComplete="off">
 
             <strong>Who are you?</strong>
             <br />
@@ -21,8 +21,8 @@ class App extends Component {
 
             <strong>What's your email?</strong><br />
             <div className="smallText">(Note: probably not used for spam. Just kidding. Definitely not used for spam.)</div>
-            {/* <br /> */}
-            <input type="text" name="senderEmail" className="smallTextBox"/>
+
+            <input type="email" name="senderEmail" className="smallTextBox"/>
             <br />
             <br />
 

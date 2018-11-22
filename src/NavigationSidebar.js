@@ -12,6 +12,7 @@ import DesktopMacIcon from '@material-ui/icons/DesktopMac';
 import FaceIcon from '@material-ui/icons/Face';
 import WidgetsIcon from '@material-ui/icons/Widgets';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import CallMadeIcon from '@material-ui/icons/CallMade';
 
 const sidebarStructure = [
   {
@@ -30,11 +31,6 @@ const sidebarStructure = [
     iconComponent: (<FaceIcon />)
   },
   {
-    text: "GitHub",
-    route: "/github",
-    iconComponent: (<WidgetsIcon />)
-  },
-  {
     text: "Photography",
     route: "/photography",
     iconComponent: (<CameraAltIcon />)
@@ -44,29 +40,61 @@ const sidebarStructure = [
     route: "/contact",
     iconComponent: (<MailOutlineIcon />)
   },
+  {
+    text: "GitHub",
+    url: "https://github.com/smithgraeme",
+    iconComponent: (<WidgetsIcon />),
+    externalLink: true,
+  },
 ];
 
-const sidebarComponents = sidebarStructure.map((entry) =>
-(
-  <Link to={entry.route} style={{ textDecoration: 'none' }}>
-    <ListItem button>
+const sidebarComponents = sidebarStructure.map((entry) => {
+
+  const listItem = (
+    <>
       <ListItemIcon>
         {entry.iconComponent}
       </ListItemIcon>
       <ListItemText primary={entry.text} />
-    </ListItem>
-  </Link>
-)
+    </>
 );
 
-function Sidebar() {
-  return (<List>
+  if (entry.externalLink){
 
+    return (
+      <a href={entry.url} target="_blank" style={{ textDecoration: 'none' }} rel="noopener noreferrer" key={entry.text}>
+        <ListItem button>
+
+          {listItem}
+
+          <ListItemIcon>
+            <CallMadeIcon />
+          </ListItemIcon>
+
+        </ListItem>
+      </a>);
+
+  } else {
+
+    return (
+      <Link to={entry.route} style={{ textDecoration: 'none' }} key={entry.text}>
+        <ListItem button>
+
+          {listItem}
+
+        </ListItem>
+      </Link>);
+
+    }
+  }
+);
+
+function NavigationSidebar() {
+  return (<List>
     <div>
       {sidebarComponents}
     </div>
-
   </List>);
 }
 
-export default Sidebar;
+export default NavigationSidebar;
