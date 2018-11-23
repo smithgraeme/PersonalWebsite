@@ -1,3 +1,5 @@
+//handles rendering the main body section of the "dashboard" parts of the website
+
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 

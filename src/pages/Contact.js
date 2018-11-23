@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Contact.css';
 
-class App extends Component {
+class Contact extends Component {
   render() {
     return (
       <div className="App">
@@ -39,4 +39,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Contact;

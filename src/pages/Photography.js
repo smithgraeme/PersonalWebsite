@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Resume() {
+function Photography() {
   return <h1>Photo blog coming Soon!</h1>;
 };
 
-export default Resume;
+export default Photography;

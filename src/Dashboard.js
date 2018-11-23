@@ -1,3 +1,5 @@
+//handles the overall layout of the dashboard page. Pulls in the sidebar, app bar, and main body contents.
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -13,9 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 import NavigationSidebar from './NavigationSidebar.js'
-import DashboardMain from './DashboardMain.js'
-
-import { BrowserRouter as Router } from 'react-router-dom'
+import DashboardBody from './DashboardBody.js'
 
 const drawerWidth = 350;
 
@@ -113,7 +113,6 @@ class Dashboard extends React.Component {
     const { classes } = this.props;
 
     return (
-      <Router>
         <div className={classes.root}>
           <CssBaseline />
           <AppBar
@@ -162,9 +161,8 @@ class Dashboard extends React.Component {
 
           </Drawer>
 
-          <DashboardMain />
+          <DashboardBody />
         </div>
-      </Router>
     );
   }
 }

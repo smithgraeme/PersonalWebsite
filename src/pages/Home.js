@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Resume() {
+function Home() {
   return <h1>Homepage coming Soon!</h1>;
 }
 
-export default Resume;
+export default Home;

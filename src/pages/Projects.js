@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Resume() {
+function Projects() {
   return <h1>Projects overview coming Soon!</h1>;
 }
 
-export default Resume;
+export default Projects;
