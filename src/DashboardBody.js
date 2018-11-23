@@ -24,6 +24,8 @@ const styles = theme => ({
 function DashboardMain(props) {
   const { classes } = props;
 
+  console.log("process.env.REACT_APP_ApiBase: " + process.env.REACT_APP_ApiBase);
+
   return (
     <main className={classes.content}>
       <div className={classes.appBarSpacer} />
