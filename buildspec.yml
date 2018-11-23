@@ -23,7 +23,6 @@ phases:
       - npm run build
   post_build:
     commands:
-      - echo Done
       - aws s3 sync ./build s3://${DeployBucket}/ --delete --acl public-read
 #artifacts:
   #files:
