@@ -24,7 +24,7 @@ const styles = theme => ({
 function DashboardMain(props) {
   const { classes } = props;
 
-  console.log("process.env.REACT_APP_ApiBase: " + process.env.REACT_APP_ApiBase);
+  console.log(JSON.stringify(process.env));
 
   return (
     <main className={classes.content}>
