@@ -23,7 +23,7 @@ class Contact extends Component {
         <header className="App-header">
 
           <p>
-            <strong className="title">Send me an email</strong>
+            <strong className="title">Email Me</strong>
           </p>
 
           <form onSubmit={this.handleSubmit} method="post" className="contactForm" autoComplete="off">
@@ -44,7 +44,7 @@ class Contact extends Component {
             <br />
             <br />
 
-            <strong>What's your email?</strong><br />
+            <strong>{`What's your email?`}</strong><br />
             <div className="smallText">(Note: probably not used for spam. Just kidding. Definitely not used for spam.)</div>
 
             <input
