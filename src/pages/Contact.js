@@ -8,16 +8,18 @@ import Button from '@material-ui/core/Button';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import CheckIcon from '@material-ui/icons/Check';
 import green from '@material-ui/core/colors/green';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const styles = theme => ({
   buttonSuccess: {
-    backgroundColor: green[300],
+    backgroundColor: green[700],
     '&:hover': {
-      backgroundColor: green[300],
+      backgroundColor: green[700],
     },
+    color: "white"
   },
-  buttonProgress: {
-    color: green[500],
+  spinner: {
+    color: "white"
   },
 });
 
@@ -35,7 +37,8 @@ class Contact extends Component {
         senderEmail: '',
         emailBody: ''
       },
-      successfullySubmittedForm: false
+      submissionSuccessful: false,
+      submissionInProgress: false
     }
   }
 
@@ -102,27 +105,32 @@ class Contact extends Component {
   getSubmitButton() {
     const { classes } = this.props;
 
-    var button = null;
+    const size = "large";
 
-    const size = "large"
+    if (this.state.submissionInProgress){
+      return (
+        <Button variant="contained" color="primary" type="submit" disabled={!this.formHasContent()} size={size}>
+          Sending&nbsp;
+          <CircularProgress size={20} color="primary" className={classes.spinner}/>
+        </Button>
+      )
+    }
 
-    if (this.state.successfullySubmittedForm){
-      button = (
+    if (this.state.submissionSuccessful){
+      return (
         <Button variant="contained" type="submit" className={classes.buttonSuccess} size={size}>
           Message Sent&nbsp;
           <CheckIcon />
         </Button>
       )
     } else {
-      button = (
+      return (
         <Button variant="contained" color="primary" type="submit" disabled={!this.formHasContent()} size={size}>
           Send&nbsp;
           <MailOutlineIcon />
         </Button>
       )
-  }
-
-  return button;
+    }
   }
 
   handleInput(event){
@@ -135,7 +143,7 @@ class Contact extends Component {
         ...this.state.form,
         [event.target.name]: event.target.value
       },
-      successfullySubmittedForm: false
+      submissionSuccessful: false
     });
   }
 
@@ -153,6 +161,10 @@ class Contact extends Component {
       const url = process.env.REACT_APP_ApiBase + "postcontactform";
       console.log("Post URL: " + url);
 
+      this.setState({
+        submissionInProgress: true
+      });
+
       await axios.post(
         url,
         qs.stringify(form),
@@ -167,7 +179,8 @@ class Contact extends Component {
           senderEmail: '',
           emailBody: ''
         },
-        successfullySubmittedForm: true
+        submissionSuccessful: true,
+        submissionInProgress: false
       });
     }
   }
