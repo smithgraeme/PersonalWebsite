@@ -3,6 +3,24 @@ import axios from 'axios'
 import qs from 'qs'
 import './Contact.css';
 
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import CheckIcon from '@material-ui/icons/Check';
+import green from '@material-ui/core/colors/green';
+
+const styles = theme => ({
+  buttonSuccess: {
+    backgroundColor: green[300],
+    '&:hover': {
+      backgroundColor: green[300],
+    },
+  },
+  buttonProgress: {
+    color: green[500],
+  },
+});
+
 class Contact extends Component {
   constructor(props) {
     super(props);
@@ -10,10 +28,14 @@ class Contact extends Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.state = {
-      senderName: '',
-      senderEmail: '',
-      emailBody: ''
+    this.state =
+    {
+      form: {
+        senderName: '',
+        senderEmail: '',
+        emailBody: ''
+      },
+      successfullySubmittedForm: false
     }
   }
 
@@ -37,7 +59,7 @@ class Contact extends Component {
               name="senderName"
               autoComplete="false"
               className="smallTextBox"
-              value={this.state.senderName}
+              value={this.state.form.senderName}
               onChange={this.handleInput}
             />
 
@@ -51,7 +73,7 @@ class Contact extends Component {
               type="email"
               name="senderEmail"
               className="smallTextBox"
-              value={this.state.senderEmail}
+              value={this.state.form.senderEmail}
               onChange={this.handleInput}
             />
 
@@ -61,13 +83,14 @@ class Contact extends Component {
             <textarea
               name="emailBody"
               rows="20"
-              value={this.state.emailBody}
+              value={this.state.form.emailBody}
               onChange={this.handleInput}
             />
 
             <br />
+            <br />
 
-            <input type="submit" value="Send" />
+            {this.getSubmitButton()}
 
           </form>
 
@@ -76,42 +99,92 @@ class Contact extends Component {
     );
   }
 
+  getSubmitButton() {
+    const { classes } = this.props;
+
+    var button = null;
+
+    const size = "large"
+
+    if (this.state.successfullySubmittedForm){
+      button = (
+        <Button variant="contained" type="submit" className={classes.buttonSuccess} size={size}>
+          Message Sent&nbsp;
+          <CheckIcon />
+        </Button>
+      )
+    } else {
+      button = (
+        <Button variant="contained" color="primary" type="submit" disabled={!this.formHasContent()} size={size}>
+          Send&nbsp;
+          <MailOutlineIcon />
+        </Button>
+      )
+  }
+
+  return button;
+  }
+
   handleInput(event){
     // console.log(event);
     // console.log(event.target);
     //console.log({inputName: event.target.name, inputValue: event.target.value});
 
     this.setState({
-      [event.target.name]: event.target.value
+      form: {
+        ...this.state.form,
+        [event.target.name]: event.target.value
+      },
+      successfullySubmittedForm: false
     });
   }
 
   async handleSubmit(event) {
     event.preventDefault();
 
-    console.log(JSON.stringify(this.state));
+    const form = this.state.form;
 
-    console.log("Posting contact form");
+    console.log(JSON.stringify(form));
 
-    const url = process.env.REACT_APP_ApiBase + "postcontactform";
-    console.log("Post URL: " + url);
+    if (this.formHasContent()) {
 
-    await axios.post(
-      url,
-      qs.stringify(this.state),
-      {headers: {'content-type': 'application/x-www-form-urlencoded' }}
-    );
+      console.log("Posting contact form");
 
-    console.log("Posting contact form done");
+      const url = process.env.REACT_APP_ApiBase + "postcontactform";
+      console.log("Post URL: " + url);
 
-    this.setState({
-      senderName: '',
-      senderEmail: '',
-      emailBody: ''
-    });
+      await axios.post(
+        url,
+        qs.stringify(form),
+        {headers: {'content-type': 'application/x-www-form-urlencoded' }}
+      );
 
-    //TODO: display something to visually indicate submission was successful
+      console.log("Posting contact form done");
+
+      this.setState({
+        form: {
+          senderName: '',
+          senderEmail: '',
+          emailBody: ''
+        },
+        successfullySubmittedForm: true
+      });
+    }
+  }
+
+  formHasContent() {
+    const form = this.state.form;
+
+    for (const entry in form) {
+      const value = form[entry];
+      //console.log(entry + ": " + value);
+
+      if (value !== '')
+        return true;
+    }
+
+    return false;
   }
 }
 
-export default Contact;
+export default withStyles(styles)(Contact);
