@@ -24,7 +24,7 @@ const styles = theme => ({
 function DashboardMain(props) {
   const { classes } = props;
 
-  console.log(JSON.stringify(process.env));
+  //console.log(JSON.stringify(process.env));
 
   return (
     <main className={classes.content}>
