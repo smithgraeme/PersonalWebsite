@@ -12,7 +12,7 @@ import Divider from '@material-ui/core/Divider';
 const styles = theme => ({
   title: {
     flexGrow: 1,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   card: {
     margin: "15px",
@@ -21,28 +21,82 @@ const styles = theme => ({
   media: {
     height: 400,
   },
+  cryptoPic: {
+    "max-width": "100%",
+  },
+  cryptoCardContent: {
+    padding: 0
+  },
+  cryptoCardContentInnerDiv: {
+    padding: 16
+  },
+  main: {
+    "text-align": "center",
+  },
+  mainInner: {
+    display: "inline-block"
+  }
 });
 
 function Projects(props) {
 const { classes } = props;
 
   return (
-    <>
-      <Typography
-        variant="h4"
-        noWrap
-        className={classes.title}
-        gutterBottom
-      >
-        Projects
-      </Typography>
+    <div className={classes.main}>
+      <div className={classes.mainInner}>
+        <Typography
+          variant="h4"
+          noWrap
+          className={classes.title}
+          gutterBottom
+        >
+          Projects
+        </Typography>
 
-      <Divider />
+        <Divider />
 
-      <ViewFunPictureCard {...props}/>
+        <SimpleCryptoPortfolio {...props}/>
 
-      <PersonalWebsiteCard {...props}/>
-    </>
+        <ViewFunPictureCard {...props}/>
+
+        <PersonalWebsiteCard {...props}/>
+      </div>
+    </div>
+  );
+}
+
+function SimpleCryptoPortfolio(props) {
+  const { classes } = props;
+
+  return (
+    <a
+      href="https://simplecryptotracker.net/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ textDecoration: 'none' }}
+    >
+      <Card className={classes.card} raised>
+        <CardActionArea>
+          <CardContent className={classes.cryptoCardContent}>
+            <img src="https://content.graemesmith.info/cryptoPortfolio.png" alt="Italian Trulli" className={classes.cryptoPic} />
+            <div className={classes.cryptoCardContentInnerDiv}>
+              <Typography gutterBottom variant="h5" component="h2">
+                Simple Crypto Portfolio and API (In Progress)
+              </Typography>
+              <Typography component="p">
+                <a
+                  href="https://simplecryptotracker.net/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >simplecryptotracker.net</a>
+                &nbsp; - a cryptocurrency price tracker and backend API for historical coin prices. Uses AWS Lambda and RDS (running a
+                MySQL database) to collect coin prices and expose them via an API that returns JSON price data.
+              </Typography>
+            </div>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </a>
   );
 }
 
@@ -50,7 +104,7 @@ function ViewFunPictureCard(props) {
   const { classes } = props;
 
   return (
-    <Link to="viewFunPicture" style={{ textDecoration: 'none' }} target="_blank">
+    <Link to="viewFunPicture" style={{ textDecoration: 'none'}} target="_blank">
       <Card className={classes.card} raised>
         <CardActionArea>
           <CardMedia
@@ -80,7 +134,6 @@ function PersonalWebsiteCard(props) {
 
   return (
     <Card className={classes.card} raised>
-      {/* <CardActionArea> */}
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
           This Website
@@ -106,7 +159,6 @@ function PersonalWebsiteCard(props) {
 
         </Typography>
       </CardContent>
-      {/* </CardActionArea> */}
     </Card>
   );
 }

@@ -6,6 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+
 
 const styles = theme => ({
   main: {
@@ -18,6 +20,11 @@ const styles = theme => ({
     margin: "10px auto",
     "text-align": "center",
     maxWidth: 1024
+  },
+  title: {
+    "text-align": "center",
+    flexGrow: 1,
+    fontWeight: "bold",
   }
 });
 
@@ -73,7 +80,18 @@ class Photography extends React.Component {
 
       const images = this.state.images.map(this.getImageComponent);
 
-      return <div className={this.props.classes.main}>{images}</div>;
+      return (
+        <div className={this.props.classes.main}>
+          <Typography
+            variant="h4"
+            noWrap
+            className={this.props.classes.title}
+            gutterBottom
+          >
+            Photography
+          </Typography>
+          {images}
+        </div>);
     }
   }
 
