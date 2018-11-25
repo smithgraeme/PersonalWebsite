@@ -5,15 +5,19 @@ import xmlParser from 'fast-xml-parser'
 import { withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
 
 const styles = theme => ({
+  main: {
+  },
   image: {
     "max-width": "98%",
-    margin: 10
+    margin: 10,
   },
   paper: {
-    margin: 10,
-    "text-align": "center"
+    margin: "10px auto",
+    "text-align": "center",
+    maxWidth: 1024
   }
 });
 
@@ -69,7 +73,7 @@ class Photography extends React.Component {
 
       const images = this.state.images.map(this.getImageComponent);
 
-      return images;
+      return <div className={this.props.classes.main}>{images}</div>;
     }
   }
 
@@ -77,11 +81,11 @@ class Photography extends React.Component {
     const {classes} = this.props;
 
     return (
-      <Paper className={classes.paper} key={url} >
+      <Card className={classes.paper} key={url} >
         <div>
           <img src={url} alt="Photography blog entry" className={classes.image}/>
         </div>
-      </Paper>
+      </Card>
     );
   }
 };
