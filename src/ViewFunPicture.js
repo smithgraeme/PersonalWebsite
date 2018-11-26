@@ -2,7 +2,7 @@ import React from 'react';
 
 function ViewFunPicture() {
   return (
-    <img src="https://api.graemesmith.info/GetRandomCatPic" alt="Cat" width="800" />
+    <img src={process.env.REACT_APP_ApiBase + "getRandomFunPicture"} alt="Cat" width="800" />
   );
 }
 
