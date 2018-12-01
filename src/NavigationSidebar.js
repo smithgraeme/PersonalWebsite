@@ -25,11 +25,11 @@ const sidebarStructure = [
     route: "/projects",
     iconComponent: (<DesktopMacIcon />)
   },
-  {
-    text: "Resume",
-    route: "/resume",
-    iconComponent: (<FaceIcon />)
-  },
+  // {
+  //   text: "Resume",
+  //   route: "/resume",
+  //   iconComponent: (<FaceIcon />)
+  // },
   {
     text: "Photography",
     route: "/photography",
