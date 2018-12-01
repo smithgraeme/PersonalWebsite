@@ -4,7 +4,10 @@ function ViewFunPicture() {
   console.log("Viewing a fun picture");
 
   return (
-    <img src={process.env.REACT_APP_ApiBase + "getRandomFunPicture"} alt="Cat" width="800" />
+    <img
+      src={process.env.REACT_APP_ApiBase + "getRandomFunPicture"}
+      alt="A fun picture" 
+    width="800" />
   );
 }
 

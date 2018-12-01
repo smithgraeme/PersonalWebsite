@@ -109,7 +109,7 @@ function ViewFunPictureCard(props) {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image="https://api.graemesmith.info/GetRandomCatPic"
+            image={process.env.REACT_APP_ApiBase + "getRandomFunPicture"}
             title="View a fun picture"
           />
           <CardContent>
